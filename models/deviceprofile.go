@@ -19,3 +19,12 @@ type DeviceProfile struct {
 	DeviceResources []DeviceResource
 	DeviceCommands  []DeviceCommand
 }
+
+/*type DeviceProfileBasicInfo struct {
+	Id           string   `json:"id" validate:"omitempty,uuid"`
+	Name         string   `json:"name" yaml:"name" validate:"required,edgex-dto-none-empty-string,edgex-dto-rfc3986-unreserved-chars"`
+	Manufacturer string   `json:"manufacturer" yaml:"manufacturer"`
+	Description  string   `json:"description" yaml:"description"`
+	Model        string   `json:"model" yaml:"model"`
+	Labels       []string `json:"labels" yaml:"labels,flow"`
+}*/
