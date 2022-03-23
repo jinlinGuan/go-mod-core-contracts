@@ -16,6 +16,14 @@ type DeviceCommand struct {
 	ResourceOperations []ResourceOperation `json:"resourceOperations" yaml:"resourceOperations" validate:"gt=0,dive"`
 }
 
+//
+type UpdateDeviceCommand struct {
+	Name               *string             `json:"name" validate:"required,edgex-dto-none-empty-string,edgex-dto-rfc3986-unreserved-chars"`
+	IsHidden           *bool               `json:"isHidden"`
+	ReadWrite          *string             `json:"readWrite" validate:"omitempty,oneof='R' 'W' 'RW' 'WR'"`
+	ResourceOperations []ResourceOperation `json:"resourceOperations" validate:"omitempty,gt=0,dive"`
+}
+
 // ToDeviceCommandModel transforms the DeviceCommand DTO to the DeviceCommand model
 func ToDeviceCommandModel(dto DeviceCommand) models.DeviceCommand {
 	resourceOperations := make([]models.ResourceOperation, len(dto.ResourceOperations))

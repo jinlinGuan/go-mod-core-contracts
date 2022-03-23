@@ -18,6 +18,16 @@ type DeviceResource struct {
 	Attributes  map[string]interface{} `json:"attributes" yaml:"attributes"`
 }
 
+//
+type UpdateDeviceResource struct {
+	Description *string                `json:"description"`
+	Name        *string                `json:"name" validate:"required,edgex-dto-none-empty-string,edgex-dto-rfc3986-unreserved-chars"`
+	IsHidden    *bool                  `json:"isHidden"`
+	Tag         *string                `json:"tag"`
+	Properties  *ResourceProperties    `json:"properties"`
+	Attributes  map[string]interface{} `json:"attributes"`
+}
+
 // ToDeviceResourceModel transforms the DeviceResource DTO to the DeviceResource model
 func ToDeviceResourceModel(d DeviceResource) models.DeviceResource {
 	return models.DeviceResource{
